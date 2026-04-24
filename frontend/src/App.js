@@ -11,8 +11,7 @@ function App() {
       setError('');
       // Parse the string input into a JSON object for the API
       const jsonData = JSON.parse(input); 
-      // Update this to your NEW Render URL
-const res = await axios.post('bajaj-finserv-dun-seven.vercel.app', jsonData);
+      const res = await axios.post('https://bajaj-dn6f.onrender.com/bfhl', jsonData);
       setResponse(res.data);
     } catch (err) {
       setError('Invalid JSON format or API error');

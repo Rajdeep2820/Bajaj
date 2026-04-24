@@ -2,8 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
+app.use(cors({
+    origin: 'https://bajaj-finserv-dun-seven.vercel.app'
+}));
 app.use(express.json());
-app.use(cors());
 
 app.post('/bfhl', (req, res) => {
     const { data } = req.body;
