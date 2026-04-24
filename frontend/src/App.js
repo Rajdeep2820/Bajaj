@@ -27,7 +27,7 @@ function App() {
       setLoading(true);
       setProgress(true);
       const jsonData = JSON.parse(input);
-      const res = await axios.post('https://bajaj-dn6f.onrender.com/bfhl', jsonData);
+      const res = await axios.post('https://bajaj-finserv-backend-iota.vercel.app/bfhl', jsonData);
       setResponse(res.data);
     } catch (err) {
       setError('Invalid JSON format or API error.');
