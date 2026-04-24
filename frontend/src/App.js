@@ -35,14 +35,23 @@ function App() {
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
       {response && (
-        <div>
-          <h2>Response Summary</h2>
-          <p>Total Trees: {response.summary.total_trees}</p>
-          <p>Total Cycles: {response.summary.total_cycles}</p>
-          <h3>Hierarchies</h3>
-          <pre>{JSON.stringify(response.hierarchies, null, 2)}</pre>
-        </div>
-      )}
+  <div style={{ marginTop: '20px', borderTop: '1px solid #444', paddingTop: '20px' }}>
+    <h2>User Information</h2>
+    <p><strong>User ID:</strong> {response.user_id}</p>
+    <p><strong>Email:</strong> {response.email_id}</p>
+    <p><strong>Roll Number:</strong> {response.college_roll_number}</p>
+    
+    <h2>Response Summary</h2>
+    <p>Total Trees: {response.summary.total_trees}</p>
+    <p>Total Cycles: {response.summary.total_cycles}</p>
+    <p>Deepest Root: {response.summary.largest_tree_root}</p>
+    
+    <h3>Hierarchies (JSON View)</h3>
+    <pre style={{ background: '#f4f4f4', padding: '10px', borderRadius: '5px' }}>
+      {JSON.stringify(response.hierarchies, null, 2)}
+    </pre>
+  </div>
+)}
     </div>
   );
 }
