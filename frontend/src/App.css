@@ -1,38 +1,438 @@
-.App {
-  text-align: center;
-}
+/* ============================================
+   Windows 95/98 Vintage Theme
+   ============================================ */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+   @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+   :root {
+     --win-bg: #008080;           /* Classic teal desktop */
+     --win-gray: #c0c0c0;         /* Window gray */
+     --win-dark: #808080;         /* Shadow gray */
+     --win-darker: #404040;
+     --win-white: #ffffff;
+     --win-black: #000000;
+     --win-blue: #000080;         /* Title bar blue */
+     --win-title-text: #ffffff;
+     --win-highlight: #000080;
+     --win-border-light: #dfdfdf;
+     --win-border-dark: #404040;
+     --win-btn-face: #c0c0c0;
+   }
+   
+   * {
+     box-sizing: border-box;
+     margin: 0;
+     padding: 0;
+   }
+   
+   body {
+     background-color: var(--win-bg);
+     font-family: 'VT323', 'Courier New', monospace;
+     font-size: 16px;
+     min-height: 100vh;
+     overflow-x: hidden;
+     /* Subtle scanline texture */
+     background-image: repeating-linear-gradient(
+       0deg,
+       transparent,
+       transparent 2px,
+       rgba(0,0,0,0.03) 2px,
+       rgba(0,0,0,0.03) 4px
+     );
+   }
+   
+   /* ---- TASKBAR ---- */
+   .taskbar {
+     position: fixed;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     height: 36px;
+     background: var(--win-gray);
+     border-top: 2px solid var(--win-white);
+     display: flex;
+     align-items: center;
+     padding: 0 4px;
+     gap: 6px;
+     z-index: 9999;
+     box-shadow: inset 0 1px 0 var(--win-white);
+   }
+   
+   .start-btn {
+     background: var(--win-gray);
+     border: none;
+     font-family: 'VT323', monospace;
+     font-size: 18px;
+     font-weight: bold;
+     padding: 2px 10px 2px 6px;
+     cursor: pointer;
+     display: flex;
+     align-items: center;
+     gap: 5px;
+     height: 26px;
+     /* Raised button effect */
+     border-top: 2px solid var(--win-white);
+     border-left: 2px solid var(--win-white);
+     border-right: 2px solid var(--win-dark);
+     border-bottom: 2px solid var(--win-dark);
+   }
+   
+   .start-btn:active {
+     border-top: 2px solid var(--win-dark);
+     border-left: 2px solid var(--win-dark);
+     border-right: 2px solid var(--win-white);
+     border-bottom: 2px solid var(--win-white);
+   }
+   
+   .start-btn img {
+     width: 16px;
+     height: 16px;
+   }
+   
+   .taskbar-clock {
+     margin-left: auto;
+     font-size: 16px;
+     padding: 2px 8px;
+     border-top: 2px solid var(--win-dark);
+     border-left: 2px solid var(--win-dark);
+     border-right: 2px solid var(--win-white);
+     border-bottom: 2px solid var(--win-white);
+     min-width: 60px;
+     text-align: center;
+   }
+   
+   /* ---- DESKTOP WRAPPER ---- */
+   .desktop {
+     min-height: 100vh;
+     padding: 20px 20px 50px 20px;
+     display: flex;
+     justify-content: center;
+     align-items: flex-start;
+   }
+   
+   /* ---- WINDOW ---- */
+   .window {
+     background: var(--win-gray);
+     border-top: 2px solid var(--win-white);
+     border-left: 2px solid var(--win-white);
+     border-right: 2px solid var(--win-dark);
+     border-bottom: 2px solid var(--win-dark);
+     box-shadow: 2px 2px 0px var(--win-black);
+     width: 100%;
+     max-width: 780px;
+     margin: 0 auto;
+   }
+   
+   /* ---- TITLE BAR ---- */
+   .title-bar {
+     background: linear-gradient(to right, var(--win-blue), #1084d0);
+     padding: 3px 4px;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     user-select: none;
+   }
+   
+   .title-bar-text {
+     color: var(--win-title-text);
+     font-size: 18px;
+     font-weight: bold;
+     display: flex;
+     align-items: center;
+     gap: 6px;
+   }
+   
+   .title-bar-icon {
+     width: 16px;
+     height: 16px;
+     font-size: 14px;
+   }
+   
+   .title-bar-controls {
+     display: flex;
+     gap: 2px;
+   }
+   
+   .title-bar-controls button {
+     width: 16px;
+     height: 14px;
+     background: var(--win-gray);
+     border: none;
+     font-size: 10px;
+     font-family: 'VT323', monospace;
+     cursor: pointer;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     padding: 0;
+     border-top: 1px solid var(--win-white);
+     border-left: 1px solid var(--win-white);
+     border-right: 1px solid var(--win-dark);
+     border-bottom: 1px solid var(--win-dark);
+     line-height: 1;
+   }
+   
+   /* ---- MENU BAR ---- */
+   .menu-bar {
+     background: var(--win-gray);
+     border-bottom: 1px solid var(--win-dark);
+     padding: 2px 4px;
+     display: flex;
+     gap: 0;
+     font-size: 16px;
+   }
+   
+   .menu-item {
+     padding: 1px 8px;
+     cursor: pointer;
+   }
+   
+   .menu-item:hover {
+     background: var(--win-blue);
+     color: var(--win-white);
+   }
+   
+   .menu-item u {
+     text-decoration: underline;
+   }
+   
+   /* ---- WINDOW BODY ---- */
+   .window-body {
+     padding: 12px;
+     display: flex;
+     flex-direction: column;
+     gap: 12px;
+   }
+   
+   /* ---- FIELD LABEL ---- */
+   .field-label {
+     font-size: 16px;
+     margin-bottom: 4px;
+     display: block;
+   }
+   
+   /* ---- SUNKEN PANEL (inset box) ---- */
+   .sunken {
+     border-top: 2px solid var(--win-dark);
+     border-left: 2px solid var(--win-dark);
+     border-right: 2px solid var(--win-white);
+     border-bottom: 2px solid var(--win-white);
+     background: var(--win-white);
+     padding: 4px;
+   }
+   
+   /* ---- TEXTAREA ---- */
+   .win-textarea {
+     width: 100%;
+     background: var(--win-white);
+     border: none;
+     outline: none;
+     font-family: 'VT323', 'Courier New', monospace;
+     font-size: 17px;
+     resize: vertical;
+     min-height: 100px;
+     color: var(--win-black);
+     padding: 2px;
+   }
+   
+   /* ---- RAISED BUTTON ---- */
+   .win-btn {
+     background: var(--win-gray);
+     border: none;
+     font-family: 'VT323', monospace;
+     font-size: 18px;
+     padding: 4px 20px;
+     cursor: pointer;
+     min-width: 80px;
+     border-top: 2px solid var(--win-white);
+     border-left: 2px solid var(--win-white);
+     border-right: 2px solid var(--win-dark);
+     border-bottom: 2px solid var(--win-dark);
+     color: var(--win-black);
+     letter-spacing: 0.5px;
+   }
+   
+   .win-btn:active {
+     border-top: 2px solid var(--win-dark);
+     border-left: 2px solid var(--win-dark);
+     border-right: 2px solid var(--win-white);
+     border-bottom: 2px solid var(--win-white);
+     padding: 5px 19px 3px 21px;
+   }
+   
+   .win-btn:focus {
+     outline: 1px dotted var(--win-black);
+     outline-offset: -4px;
+   }
+   
+   .btn-row {
+     display: flex;
+     justify-content: flex-end;
+     gap: 6px;
+   }
+   
+   /* ---- ERROR BOX ---- */
+   .error-box {
+     background: var(--win-gray);
+     border-top: 2px solid var(--win-white);
+     border-left: 2px solid var(--win-white);
+     border-right: 2px solid var(--win-dark);
+     border-bottom: 2px solid var(--win-dark);
+     padding: 8px 12px;
+     display: flex;
+     align-items: center;
+     gap: 10px;
+     font-size: 17px;
+   }
+   
+   .error-icon {
+     font-size: 26px;
+     line-height: 1;
+   }
+   
+   /* ---- STATUS BAR ---- */
+   .status-bar {
+     border-top: 2px solid var(--win-dark);
+     padding: 2px 6px;
+     font-size: 15px;
+     display: flex;
+     gap: 8px;
+   }
+   
+   .status-panel {
+     border-top: 1px solid var(--win-dark);
+     border-left: 1px solid var(--win-dark);
+     border-right: 1px solid var(--win-white);
+     border-bottom: 1px solid var(--win-white);
+     padding: 1px 6px;
+   }
+   
+   /* ---- SECTION HEADER ---- */
+   .section-header {
+     background: var(--win-blue);
+     color: var(--win-white);
+     padding: 2px 8px;
+     font-size: 17px;
+     margin-bottom: 6px;
+   }
+   
+   /* ---- INFO GRID ---- */
+   .info-grid {
+     display: grid;
+     grid-template-columns: 140px 1fr;
+     gap: 2px 8px;
+     font-size: 16px;
+     padding: 4px;
+   }
+   
+   .info-label {
+     font-weight: bold;
+   }
+   
+   /* ---- SUMMARY GRID ---- */
+   .summary-grid {
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);
+     gap: 8px;
+   }
+   
+   .summary-card {
+     border-top: 2px solid var(--win-white);
+     border-left: 2px solid var(--win-white);
+     border-right: 2px solid var(--win-dark);
+     border-bottom: 2px solid var(--win-dark);
+     padding: 6px 10px;
+     background: var(--win-gray);
+     text-align: center;
+   }
+   
+   .summary-value {
+     font-size: 30px;
+     color: var(--win-blue);
+     display: block;
+     line-height: 1;
+   }
+   
+   .summary-label {
+     font-size: 14px;
+     color: var(--win-darker);
+   }
+   
+   /* ---- JSON OUTPUT ---- */
+   .json-output {
+     font-family: 'Courier New', monospace;
+     font-size: 13px;
+     background: var(--win-white);
+     color: var(--win-black);
+     padding: 8px;
+     white-space: pre;
+     overflow-x: auto;
+     max-height: 320px;
+     overflow-y: auto;
+     border: none;
+     outline: none;
+     width: 100%;
+   }
+   
+   /* scrollbar for json output */
+   .json-output::-webkit-scrollbar {
+     width: 16px;
+     height: 16px;
+   }
+   
+   .json-output::-webkit-scrollbar-track {
+     background: var(--win-gray);
+     border-left: 1px solid var(--win-dark);
+   }
+   
+   .json-output::-webkit-scrollbar-thumb {
+     background: var(--win-gray);
+     border-top: 2px solid var(--win-white);
+     border-left: 2px solid var(--win-white);
+     border-right: 2px solid var(--win-dark);
+     border-bottom: 2px solid var(--win-dark);
+   }
+   
+   /* ---- PROGRESS BAR (decorative) ---- */
+   .progress-bar-wrap {
+     border-top: 2px solid var(--win-dark);
+     border-left: 2px solid var(--win-dark);
+     border-right: 2px solid var(--win-white);
+     border-bottom: 2px solid var(--win-white);
+     background: var(--win-white);
+     height: 18px;
+     overflow: hidden;
+   }
+   
+   .progress-bar-fill {
+     height: 100%;
+     background: var(--win-blue);
+     width: 0%;
+     transition: width 0.6s ease;
+   }
+   
+   .progress-bar-fill.active {
+     width: 100%;
+   }
+   
+   /* ---- DIVIDER ---- */
+   .win-divider {
+     border: none;
+     border-top: 1px solid var(--win-dark);
+     border-bottom: 1px solid var(--win-white);
+     margin: 4px 0;
+   }
+   
+   /* ---- LOADING OVERLAY ---- */
+   .loading-text {
+     font-size: 18px;
+     text-align: center;
+     padding: 10px;
+     color: var(--win-blue);
+     animation: blink 1s step-end infinite;
+   }
+   
+   @keyframes blink {
+     0%, 100% { opacity: 1; }
+     50% { opacity: 0; }
+   }
