@@ -142,5 +142,6 @@ app.post('/bfhl', (req, res) => {
     res.json(result);
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server is up on port ${PORT}`));
+// const PORT = process.env.PORT || 3000;
+// app.listen(PORT, () => console.log(`Server is up on port ${PORT}`));
+module.exports = app;
