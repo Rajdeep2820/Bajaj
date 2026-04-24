@@ -20,7 +20,7 @@ function App() {
 
   return (
     <div className="App" style={{ padding: '20px', fontFamily: 'monospace' }}>
-      <h1>SRM Full Stack Challenge</h1>
+      <h1>Bajaj Finserv Full Stack Challenge</h1>
       
       <textarea 
         rows="10" 
